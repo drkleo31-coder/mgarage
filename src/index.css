@@ -1,0 +1,95 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: "Cinzel", Georgia, serif;
+  --font-sans: "Plus Jakarta Sans", system-ui, -apple-system, sans-serif;
+  --color-gold-300: #F3D578;
+  --color-gold-400: #E2BE53;
+  --color-gold-500: #D4AF37;
+  --color-gold-600: #A88422;
+  --color-obsidian-950: #060607;
+  --color-obsidian-900: #0B0B0E;
+  --color-obsidian-800: #131318;
+}
+
+@layer base {
+  html {
+    font-family: var(--font-sans);
+    background-color: #060607;
+    color: #F8F7F4;
+    overflow-x: clip;
+  }
+
+  body {
+    overflow-x: clip;
+    background-color: #060607;
+  }
+
+  h1, h2, h3, .font-display {
+    font-family: var(--font-display);
+  }
+}
+
+.gold-gradient-text {
+  background: linear-gradient(135deg, #FFF5CC 0%, #E5C158 45%, #B88A1E 85%, #F6DF90 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.gold-shimmer-border {
+  position: relative;
+}
+
+.gold-shimmer-border::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  padding: 1px;
+  border-radius: inherit;
+  background: linear-gradient(135deg, rgba(243, 213, 120, 0.45), rgba(212, 175, 55, 0.08) 50%, rgba(243, 213, 120, 0.3));
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+@keyframes sweepGlow {
+  0% {
+    transform: translateX(-120%) skewX(-18deg);
+  }
+  100% {
+    transform: translateX(220%) skewX(-18deg);
+  }
+}
+
+.btn-metallic-sweep {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-metallic-sweep::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 45%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.35), transparent);
+  transform: translateX(-120%) skewX(-18deg);
+  pointer-events: none;
+}
+
+.btn-metallic-sweep:hover::after {
+  animation: sweepGlow 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto !important;
+  }
+  .btn-metallic-sweep:hover::after {
+    animation: none;
+  }
+}

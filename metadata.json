@@ -1,0 +1,6 @@
+{
+  "name": "M Garage Estética Automotiva",
+  "description": "Estética automotiva de alto padrão: Lavagem, Higienização, Polimento e Proteção para valorizar e proteger o seu veículo.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
